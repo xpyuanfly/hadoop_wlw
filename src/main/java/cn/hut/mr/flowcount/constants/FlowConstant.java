@@ -11,6 +11,6 @@ public interface FlowConstant {
     String INPUT_PATH = "D:\\centos\\inputFC";
     String OUTPUT_PATH = "D:\\centos\\outputFC";
 
-    String INPUT_PATH_sort = "D:\\centos\\inputFC\\part-r-00000";
+    String INPUT_PATH_sort = "D:\\centos\\outputFC\\part-r-00000";
     String OUTPUT_PATH_sort= "D:\\centos\\outputFC_sort";
 }
