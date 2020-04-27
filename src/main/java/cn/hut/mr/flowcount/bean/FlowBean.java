@@ -1,6 +1,7 @@
 package cn.hut.mr.flowcount.bean;
 
 import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
 import java.io.DataOutput;
@@ -13,7 +14,7 @@ import java.io.IOException;
  * @author HZX
  * @date 2020/4/23 10:23
  */
-public class FlowBean implements Writable{
+public class FlowBean implements WritableComparable<FlowBean>{
 
     // 封装属性
     private String telno = "";
@@ -25,7 +26,7 @@ public class FlowBean implements Writable{
 
     }
 
-    private FlowBean(long upFlow, long downFlow) {
+    public FlowBean(long upFlow, long downFlow) {
         this.upFlow = upFlow;
         this.downFlow = downFlow;
         this.sumFlow = upFlow + downFlow;
@@ -62,12 +63,12 @@ public class FlowBean implements Writable{
         return this;
     }
 
-    private FlowBean setSumFlow(long sumFlow) {
+    public FlowBean setSumFlow(long sumFlow) {
         this.sumFlow = sumFlow;
         return this;
     }
 
-    private void set(long upFlow, long downFlow) {
+    public void set(long upFlow, long downFlow) {
         this.upFlow = upFlow;
         this.downFlow = downFlow;
         this.sumFlow = upFlow + downFlow;
@@ -85,7 +86,7 @@ public class FlowBean implements Writable{
 
     @Override
     public String toString() {
-        return "\t" + upFlow +
+        return  upFlow +
                 "\t" + downFlow +
                 "\t" + sumFlow;
     }
@@ -116,7 +117,7 @@ public class FlowBean implements Writable{
         this.sumFlow = in.readLong();
     }
 
-    // public int compareTo(FlowBean o) {
-    //     return (int)(o.getSumFlow() - this.getSumFlow());
-    // }
+     public int compareTo(FlowBean o) {
+        return (int)(o.getSumFlow() - this.getSumFlow());
+     }
 }
