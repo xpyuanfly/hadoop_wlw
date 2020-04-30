@@ -14,7 +14,7 @@ public class SortMapper extends Mapper<LongWritable, Text, FlowBean, NullWritabl
 //
 //    @Override
 //    protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-//        String[] split = value.toString().split(" ");
+//        String[] split = value.toString().split("\t");
 //        text.set(split[0]);
 //        flowBean.set(Long.parseLong(split[1]), Long.parseLong(split[2]), Long.parseLong(split[3]));
 //
@@ -23,7 +23,7 @@ public class SortMapper extends Mapper<LongWritable, Text, FlowBean, NullWritabl
 
     @Override
     protected void map(LongWritable k1, Text v1, Context context) throws IOException, InterruptedException {
-        String[] value_arr = v1.toString().split(" ");
+        String[] value_arr = v1.toString().split("\t");
         String telno = value_arr[0];
         long upload = Long.parseLong(value_arr[1]);
         long download = Long.parseLong(value_arr[2]);
