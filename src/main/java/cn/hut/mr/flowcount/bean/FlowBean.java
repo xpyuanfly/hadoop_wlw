@@ -86,8 +86,7 @@ public class FlowBean implements WritableComparable<FlowBean>{
 
     @Override
     public String toString() {
-        return  telno+
-                "\t" +upFlow +
+        return  upFlow +
                 "\t" + downFlow +
                 "\t" + sumFlow;
     }

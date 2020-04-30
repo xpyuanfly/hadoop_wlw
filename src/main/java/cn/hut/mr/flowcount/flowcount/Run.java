@@ -28,26 +28,18 @@ public class Run {
      * @return void
      */
 
+
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
-        String argument1 = FlowConstant.INPUT_PATH;
-        String argument2 = FlowConstant.OUTPUT_PATH;
-
-        if (args.length == 2) {
-            argument1 = args[0];
-            argument2 = args[1];
-        }
-        // 构建Configuration对象
+         // 构建Configuration对象
         Configuration conf = new Configuration();
-        int tasks = 7;
 
-        // 清理输出文件夹
-        Path outPath = new Path(argument2);
+        Path outPath = new Path(FlowConstant.OUTPUT_PATH);
         // 判断输出文件是否已经存在，存在的话就将其删除
         FileSystem fs = FileSystem.get(conf);
         if (fs.exists(outPath)) {
             fs.delete(outPath, true);
         }
-
+       
         // 构建一个Job对象
         Job job = Job.getInstance(conf);
 
@@ -57,23 +49,19 @@ public class Run {
         job.setMapperClass(FCMapper.class);
         job.setReducerClass(FCReducer.class);
 
-        // 指定输入输出文件的路径
-        FileInputFormat.setInputPaths(job, new Path(argument1));
+         // 指定输入输出文件的路径
+        FileInputFormat.setInputPaths(job, new Path(FlowConstant.INPUT_PATH));
         FileOutputFormat.setOutputPath(job, outPath);
 
         // 设置Mapper输出 K2 V2
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(FlowBean.class);
 
-        // 设置partitioner
-        job.setPartitionerClass(FCPartitioner.class);
-        job.setNumReduceTasks(tasks);
-
         // 设置最终输出 K3,V3
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(FlowBean.class);
 
-        // 提交执行
+        // 提交执行 
         boolean isSuccess = job.waitForCompletion(true);
 
         System.out.println("流量统计" + (isSuccess ? "成功" : "失败"));
