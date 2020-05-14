@@ -1,3 +1,5 @@
+package cn.hut.mr.friends;
+
 import java.io.IOException;
 import java.util.Vector;
 

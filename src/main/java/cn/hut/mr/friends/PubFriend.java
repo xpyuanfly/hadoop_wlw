@@ -1,3 +1,5 @@
+package cn.hut.mr.friends;
+
 import java.io.IOException;
 
 
@@ -11,9 +13,9 @@ public class PubFriend {
 		String outPathStep2="e:/friendsOutput/out2";
 		try {
 			if(PubFriendstep1.startStep1(inPathStep1,outPathStep1)&&PubFriendstep2.startStep2(inPathStep2,outPathStep2))
-				System.out.println("ÔËÐÐ³É¹¦");
+				System.out.println("ï¿½ï¿½ï¿½Ð³É¹ï¿½");
 			else {
-				System.out.println("ÔËÐÐÊ§°Ü");
+				System.out.println("ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½");
 			}
 		} catch (ClassNotFoundException | IOException | InterruptedException e) {
 			// TODO Auto-generated catch block
