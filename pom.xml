@@ -15,7 +15,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<hadoop.version>2.2.0</hadoop.version>
+		<hadoop.version>2.7.0</hadoop.version>
 		<start-class>cn.hut.rpc.RPCServer</start-class>
 		<skipTests>true</skipTests>
 	</properties>
